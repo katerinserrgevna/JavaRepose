@@ -1,19 +1,22 @@
 package jm.task.core.jdbc;
 
-import com.mysql.fabric.jdbc.FabricMySQLDriver;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.Util;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
         UserServiceImpl user = new UserServiceImpl();
+
 
         user.createUsersTable();
 
@@ -26,8 +29,8 @@ public class Main {
         for (User u: userList) {
             System.out.println(u.toString());
         }
-
         user.cleanUsersTable();
         user.dropUsersTable();
+        Util.shutdown();
     }
 }
