@@ -26,6 +26,10 @@ public class Car {
         this.year = year;
     }
 
+    public Car() {
+
+    }
+
     public String getModel() {
         return this.model;
     }
@@ -38,8 +42,7 @@ public class Car {
         return this.year;
     }
 
-    static public Set<Car> getSetCars (int count) {
-        //Set<Car> set = setCars.stream().limit(count).collect(Collectors.toSet());
+    public Set<Car> getSetCars (int count) {
         return setCars.stream().limit(count).collect(Collectors.toSet());
     }
 }
