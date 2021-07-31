@@ -7,11 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import web.model.Users;
+import web.model.User;
 import web.service.UserServiceImpl;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/users")
@@ -28,12 +25,12 @@ public class UsersController {
 
     @GetMapping("/new")
     public String newUser(Model model) {
-        model.addAttribute("user", new Users());
+        model.addAttribute("user", new User());
         return "/users/newUser";
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("user") Users user) {
+    public String create(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/users";
     }
