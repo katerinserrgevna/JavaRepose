@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 public class CarController {
 
     @GetMapping(value = "/cars")
-    public String printCar(@RequestParam (value = "count", required = false) String count, ModelMap model) {
+    public String printCar(@RequestParam (value = "count", required = false) Integer count, ModelMap model) {
         CarService carService = new CarService();
         if (count == null) {
             model.addAttribute("messages", carService.getAllCars());
         } else {
-            model.addAttribute("messages", carService.getSetCars(Integer.parseInt(count)));
+            model.addAttribute("messages", carService.getSetCars(count));
         }
         return "cars";
     }

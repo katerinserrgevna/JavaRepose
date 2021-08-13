@@ -1,8 +1,7 @@
 package web.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -11,13 +10,13 @@ public class Car {
     private String series;
     private int year;
 
-    static public Set<Car> setCars = new HashSet<>();
+    static private List<Car> listCars = new ArrayList<>();
     static {
-        setCars.add(new Car("BMW", "X6", 1999));
-        setCars.add(new Car("Honda","CRV", 2007));
-        setCars.add(new Car("Hyundai","Solaris", 2015));
-        setCars.add(new Car("Lada", "Vesta", 1985));
-        setCars.add(new Car("Porsche", "Cayenne", 2021));
+        listCars.add(new Car("BMW", "X6", 1999));
+        listCars.add(new Car("Honda","CRV", 2007));
+        listCars.add(new Car("Hyundai","Solaris", 2015));
+        listCars.add(new Car("Lada", "Vesta", 1985));
+        listCars.add(new Car("Porsche", "Cayenne", 2021));
     }
 
     public Car(String model, String series, int year) {
@@ -28,6 +27,14 @@ public class Car {
 
     public Car() {
 
+    }
+
+    public void addCar(Car car) {
+        this.listCars.add(car);
+    }
+
+    public List<Car> getSetCars() {
+        return this.listCars;
     }
 
     public String getModel() {
@@ -42,7 +49,7 @@ public class Car {
         return this.year;
     }
 
-    public Set<Car> getSetCars (int count) {
-        return setCars.stream().limit(count).collect(Collectors.toSet());
+    public List<Car> getSetCars (int count) {
+        return listCars.stream().limit(count).collect(Collectors.toList());
     }
 }
